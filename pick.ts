@@ -1,6 +1,6 @@
 import type { Equal, Expect, NotAny } from './util'
 
-type MyPick<T, K> = any
+type MyPick<T, K extends keyof T> = { [k in K]:T[k]}
 
 type cases = [
   Expect<Equal<Expected1, MyPick<Todo, 'title'>>>,
