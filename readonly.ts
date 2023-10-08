@@ -2,6 +2,11 @@ import type { Equal, Expect, Alike } from "./util";
 
 type MyReadonly2<T, K> = any;
 
+interface Todo {
+  title: string;
+  description: string;
+}
+
 type cases = [
   Expect<Alike<MyReadonly2<Todo1>, Readonly<Todo1>>>,
   Expect<Alike<MyReadonly2<Todo1, "title" | "description">, Expected>>,
