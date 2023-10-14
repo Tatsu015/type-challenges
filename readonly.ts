@@ -1,7 +1,12 @@
 import type { Equal, Expect, Alike } from "./util";
 
-type MyReadonly2<T, K> = any;
+type MyReadonly2<T, K extends keyof T = keyof T> = {
+  [t in keyof T as t extends K ? never : t]: T[t];
+} & {
+  readonly [t in K]: T[t];
+};
 
+type aa = MyReadonly2<Todo1, "title">;
 interface Todo {
   title: string;
   description: string;
