@@ -1,6 +1,10 @@
 import type { Equal, Expect, NotAny } from "./util";
 
-type DeepReadonly<T> = any;
+type DeepReadonly<T> = {
+  readonly [t in keyof T]: keyof T[t] extends never ? T[t] : DeepReadonly<T[t]>;
+};
+
+type aaaaaaaaaaaaaa = DeepReadonly<X1>;
 
 type cases = [
   Expect<Equal<DeepReadonly<X1>, Expected1>>,
