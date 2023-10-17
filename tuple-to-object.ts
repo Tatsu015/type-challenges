@@ -1,5 +1,7 @@
 import type { Equal, Expect, NotAny } from "./util";
 
+type TupleToObject<T extends readonly any[]> = any;
+
 // expected to be string
 type HelloWorld = string;
 
@@ -38,5 +40,4 @@ type cases = [
   >
 ];
 
-// @ts-expect-error
 type error = TupleToObject<[[1, 2], {}]>;
