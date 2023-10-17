@@ -1,6 +1,6 @@
 import type { Equal, Expect, NotAny } from "./util";
 
-type TupleToObject<T extends readonly any[]> = any;
+type TupleToObject<T extends readonly any[]> = { [t in T[number]]: t };
 
 // expected to be string
 type HelloWorld = string;
