@@ -1,6 +1,6 @@
 import type { Equal, Expect, NotAny } from "./util";
 
-type First<T extends any[]> = any;
+type First<T extends any[]> = T extends [] ? never : T[0];
 
 type cases = [
   Expect<Equal<First<[3, 2, 1]>, 3>>,
