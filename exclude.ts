@@ -1,7 +1,5 @@
 import type { Equal, Expect, NotAny } from "./util";
 
-type Length<T> = any;
-
 type MyExclude<T, U> = any;
 
 type cases = [
