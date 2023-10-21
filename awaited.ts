@@ -1,6 +1,10 @@
 import type { Equal, Expect, NotAny } from "./util";
 
-type MyAwaited<T> = any;
+type MyAwaited<T> = T extends Promise<infer U>
+  ? U extends Promise<any>
+    ? MyAwaited<U>
+    : U
+  : never;
 
 type X = Promise<string>;
 type Y = Promise<{ field: number }>;
