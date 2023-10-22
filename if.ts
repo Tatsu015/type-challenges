@@ -1,6 +1,6 @@
 import type { Equal, Expect, NotAny } from "./util";
 
-type If<C, T, F> = any;
+type If<C, T, F> = C extends true ? T : F;
 
 type cases = [
   Expect<Equal<If<true, "a", "b">, "a">>,
