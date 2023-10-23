@@ -1,6 +1,6 @@
 import type { Equal, Expect, NotAny } from "./util";
 
-type Concat<T, U> = any;
+type Concat<T extends readonly any[], U extends readonly any[]> = [...T, ...U];
 
 const tuple = [1] as const;
 
