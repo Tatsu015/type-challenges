@@ -1,6 +1,13 @@
 import type { Equal, Expect, NotAny } from "./util";
 
-type Includes<T extends readonly any[], U> = any;
+type Includes<T extends readonly unknown[], U> = T extends [
+  infer First,
+  ...infer Rest
+]
+  ? Equal<First, U> extends true
+    ? true
+    : Includes<Rest, U>
+  : false;
 
 type cases = [
   Expect<
