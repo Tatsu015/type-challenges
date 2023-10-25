@@ -1,6 +1,6 @@
 import type { Equal, Expect, NotAny } from "./util";
 
-type Push<T, U> = any;
+type Push<T extends any[], U> = [...T, U];
 
 type cases = [
   Expect<Equal<Push<[], 1>, [1]>>,
