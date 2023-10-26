@@ -1,0 +1,9 @@
+import type { Equal, Expect, NotAny } from "./util";
+
+type Unshift<T, U> = any;
+
+type cases = [
+  Expect<Equal<Unshift<[], 1>, [1]>>,
+  Expect<Equal<Unshift<[1, 2], 0>, [0, 1, 2]>>,
+  Expect<Equal<Unshift<["1", 2, "3"], boolean>, [boolean, "1", 2, "3"]>>
+];
