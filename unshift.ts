@@ -1,6 +1,6 @@
 import type { Equal, Expect, NotAny } from "./util";
 
-type Unshift<T, U> = any;
+type Unshift<T extends any[], U> = [U, ...T];
 
 type cases = [
   Expect<Equal<Unshift<[], 1>, [1]>>,
