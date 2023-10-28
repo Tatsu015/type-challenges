@@ -1,6 +1,6 @@
 import type { Equal, Expect, NotAny } from "./util";
 
-type MyParameters<T extends (...args: any[]) => any> = any;
+type MyParameters<T> = T extends (...args: infer U) => any ? U : never;
 
 const foo = (arg1: string, arg2: number): void => {};
 const bar = (arg1: boolean, arg2: { a: "A" }): void => {};
