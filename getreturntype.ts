@@ -1,6 +1,6 @@
 import type { Equal, Expect, NotAny } from "./util";
 
-type MyReturnType<T> = any;
+type MyReturnType<T> = T extends (...args: any[]) => infer U ? U : never;
 
 type cases = [
   Expect<Equal<string, MyReturnType<() => string>>>,
