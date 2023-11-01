@@ -1,6 +1,6 @@
 import type { Equal, Expect, NotAny, Alike } from "./util";
 
-type Last<T extends any[]> = any;
+type Last<T extends any[]> = T extends [...any, infer U] ? U : undefined;
 
 type cases = [
   Expect<Equal<Last<[2]>, 2>>,
