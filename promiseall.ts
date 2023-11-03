@@ -1,6 +1,10 @@
 import type { Equal, Expect, NotAny, Alike } from "./util";
 
-declare function PromiseAll(values: any): any;
+declare function PromiseAll<T extends readonly any[]>(
+  values: readonly [...T]
+): Promise<{ [U in keyof T]: T[U] extends Promise<infer V> ? V : T[U] }>;
+
+type aaaaa = typeof promiseAllTest4;
 
 const promiseAllTest1 = PromiseAll([1, 2, 3] as const);
 const promiseAllTest2 = PromiseAll([1, 2, Promise.resolve(3)] as const);
