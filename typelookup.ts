@@ -1,6 +1,6 @@
 import type { Equal, Expect, NotAny, Alike } from "./util";
 
-type LookUp<U, T> = any;
+type LookUp<U, T> = U extends { type: T } ? U : never;
 
 interface Cat {
   type: "cat";
