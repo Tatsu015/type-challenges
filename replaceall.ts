@@ -1,6 +1,16 @@
 import type { Equal, Expect, NotAny, Alike } from "./util";
 
-type ReplaceAll<S extends string, From extends string, To extends string> = any;
+type ReplaceAll<
+  S extends string,
+  From extends string,
+  To extends string
+> = From extends ""
+  ? S
+  : S extends `${infer Pre}${From}${infer Suf}`
+  ? `${Pre}${To}${ReplaceAll<`${Suf}`, From, To>}`
+  : S;
+
+type aaaaaaaa = ReplaceAll<"foobarfoobar", "ob", "b">;
 
 type cases = [
   Expect<Equal<ReplaceAll<"foobar", "bar", "foo">, "foofoo">>,
