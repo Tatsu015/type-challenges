@@ -1,6 +1,10 @@
 import type { Equal, Expect, NotAny, Alike } from "./util";
 
-type Permutation<T> = any;
+type Permutation<T, K = T> = [T] extends [never]
+  ? []
+  : K extends infer U
+  ? [U, ...Permutation<Exclude<T, U>>]
+  : [];
 
 type cases = [
   Expect<Equal<Permutation<"A">, ["A"]>>,
