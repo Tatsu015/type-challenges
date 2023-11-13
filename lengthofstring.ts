@@ -1,6 +1,9 @@
 import type { Equal, Expect, NotAny, Alike } from "./util";
 
-type LengthOfString<S extends string> = any;
+type StrToTouple<S extends string> = S extends `${infer T}${infer R}`
+  ? [T, ...StrToTouple<R>]
+  : [];
+type LengthOfString<S extends string> = StrToTouple<S>["length"];
 
 type cases = [
   Expect<Equal<LengthOfString<"">, 0>>,
